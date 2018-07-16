@@ -17,7 +17,7 @@ Ruby on Rails
 
 This application requires:
 
-- Ruby 2.5.1
+- Ruby >= 2.3.1
 - Rails 5.2.0
 - PostreSQL 9.6.*
 
@@ -28,35 +28,42 @@ Getting Started
 - Install application requirements listed above
 - clone project
 
+```bash
 $ git clone https://github.com/mgfzemor/piubs_apoio.git
+```
 
 - Install gems
 
+```bash
 $ cd piubs_apoio
-
 $ bundle install
+```
 
 - Configure you database
 
-Set your DB configuration in /config/database.yml
+Set your DB configuration in `/config/database.yml`
 
 - Create tables
 
+```bash
 $ rake db:create db:migrate
+```
 
-- Restore DB
+- Restore the DB
 
-Restore your database "piubs_apoio" from file /db/db.backup
+Restore your database `piubs_apoio` from file `/db/db.backup`
 
 - Start Server
 
+```bash
 $ rails s
+```
 
 - Drink a cup of tea and enjoy it ;)
 
 Credits
 -------
-mgfzemor
+- mgfzemor
 
 License
 -------
