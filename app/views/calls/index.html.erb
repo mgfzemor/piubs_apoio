@@ -19,19 +19,21 @@
   <tbody>
     <% @calls.each do |call| %>
       <tr>
-        <td><%= call.data_criacao %></td>
-        <td><%= call.titulo %></td>
-        <td><%= call.status %></td>
-        <td><%= call.severidade %></td>
-        <td><%= call.municipio %></td>
-        <td><%= call.uf %></td>
-        <td><%= call.categoria_id %></td>
-        <td><%= call.sei %></td>
-        <td><%= call.answer.resposta %></td>
-        <td><%= link_to 'Visualizar', call_show_atendimento_path(call.id), class: 'btn btn-success btn-sm', style: 'color: white' %></td>
-        <% if current_user.try(:user?) %>
-          <td><%= link_to 'Editar', edit_call_path(call), class: 'btn btn-success btn-sm', style: 'color: white' %></td>
-          <td><%= link_to 'Remover', call, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger btn-sm', style: 'color: white' %></td>
+        <% if current_user.id == call.requerente.to_i || current_user.try(:admin?) %>
+          <td><%= call.data_criacao %></td>
+          <td><%= call.titulo %></td>
+          <td><%= call.status %></td>
+          <td><%= call.severidade %></td>
+          <td><%= call.municipio %></td>
+          <td><%= call.uf %></td>
+          <td><%= call.categoria_id %></td>
+          <td><%= call.sei %></td>
+          <td><%= call.answer.resposta %></td>
+          <td><%= link_to 'Visualizar', call_show_atendimento_path(call.id), class: 'btn btn-success btn-sm', style: 'color: white' %></td>
+          <% if current_user.try(:user?) %>
+            <td><%= link_to 'Editar', edit_call_path(call), class: 'btn btn-success btn-sm', style: 'color: white' %></td>
+            <td><%= link_to 'Remover', call, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger btn-sm', style: 'color: white' %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

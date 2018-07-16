@@ -82,3 +82,7 @@ pickle-email-*.html
 
 # tilde files are usually backup files from a text editor
 *~
+
+# Local dependent files
+config/database.yml
+config/secrets.yml

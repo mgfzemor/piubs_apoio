@@ -1,6 +1,6 @@
 class Answer < ApplicationRecord
   has_many :calls
   def self.search(query)
-    where('pergunta like ?', "%#{query}%")
+    where('resposta like ? or pergunta like ?', "%#{query}%", "%#{query}%")
   end
 end
