@@ -7,12 +7,12 @@
 default: &default
   adapter:  postgresql
   host:     localhost
-  port: 5433
+  port: 5432
   encoding: unicode
   database: piubs_apoio
   pool:     5
-  username: postgres
-  password: 19550410
+  username: rafael
+  password: rafael99
   template: template0
 
 development:

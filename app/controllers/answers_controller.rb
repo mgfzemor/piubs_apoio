@@ -36,7 +36,7 @@ class AnswersController < ApplicationController
         @call.status = 'Resolvido'
         @call.data_fechamento = Date.today
         @call.save
-        format.html { redirect_to "/call/show_atendimento/#{@call.id}" , notice: 'Answer was successfully created.' }
+        format.html { redirect_to "/call/show_atendimento/#{@call.id}" , notice: 'Resposta foi adicionada com sucesso.' }
         format.json { render :show, status: :created, location: @answer }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class AnswersController < ApplicationController
   def update
     respond_to do |format|
       if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
+        format.html { redirect_to @answer, notice: 'Resposta atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @answer }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to answers_url, notice: 'Answer was successfully destroyed.' }
+      format.html { redirect_to answers_url, notice: 'Resposta excluída.' }
       format.json { head :no_content }
     end
   end

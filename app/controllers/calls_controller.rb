@@ -1,5 +1,5 @@
 class CallsController < ApplicationController
-  before_action :set_call, only: [:show, :edit, :update, :destroy, :show_atendimento]
+  before_action :set_call, only: [:show, :edit, :update, :destroy, :show_atendimento, :associate]
   before_action :set_answers , only: [:new, :edit, :update, :create]
   around_action :catch_not_found, only: :search
 
@@ -13,7 +13,7 @@ class CallsController < ApplicationController
   # GET /calls/1.json
   def show
     query = params[:search]
-    puts query
+    puts "Query: #{query}"
     if query
       @answers = Answer.search(query)
       respond_to do |format|
@@ -26,13 +26,12 @@ class CallsController < ApplicationController
 
   def associate
     @answer = Answer.find(params[:answer_id])
-    @call = Call.find(params[:call_id])
     @call.answer_id = @answer.id
     @call.status = 'Resolvido'
     @call.data_fechamento = Date.today
     respond_to do |format|
       if @call.save
-        format.html { redirect_to "/call/show_atendimento/#{@call.id}" , notice: 'Answer was successfully associate.' }
+        format.html { redirect_to "/call/show_atendimento/#{@call.id}" , notice: 'Resposta associada com sucesso.' }
       end
     end
   end
