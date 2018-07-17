@@ -31,13 +31,12 @@ This application requires:
 
 Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).  
 
------
 You may use Docker to hold your information in containers. Learn more about [Installing Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
 
 
 
 
-
+---
 Getting Started - Using Rails
 ---------------
 - Install application requirements listed above
@@ -72,10 +71,10 @@ $ rails server -p <your_port>
 
 - Drink a cup of tea and enjoy it ;)
 
+- The next time, you just need to run `rails server -p <your_port>`
 
 
-
-
+---
 Getting Started - Using Docker
 ---------------
 - Install application requirements listed above, plus Docker >= 13.1.0
@@ -98,6 +97,11 @@ $ bundle install
 ```bash
 $ docker-compose build
 ```
+- Start the containers
+
+```bash
+$ docker-compose up
+```
 
 - Restore the DB `piubs_apoio` from `db/db.backup` to the container
 
@@ -107,17 +111,11 @@ $ docker exec -it <your_container_id> bash
 $ pg_restore -U <username> -d <dbname> -1 db.backup
 ```
 
-- Start the containers
-
-```bash
-$ docker-compose up
-```
-
 - Drink a cup of tea and enjoy it in `localhost:3000` ;)
 
+- The next time, you just need to run `docker-compose up`
 
-
-
+---
 Credits
 -------
 - mgfzemor
