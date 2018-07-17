@@ -106,9 +106,9 @@ $ docker-compose up
 - Restore the DB `piubs_apoio` from `db/db.backup` to the container
 
 ```bash
-$ docker cp db/db.backup <your_container_id>:db.backup
+$ docker cp db/backup.sql <your_container_id>:backup.sql
 $ docker exec -it <your_container_id> bash
-$ pg_restore -U <username> -d <dbname> -1 db.backup
+$ psql -d piubs_apoio -f backup.sql -U postgres
 ```
 
 - Drink a cup of tea and enjoy it in `localhost:3000` ;)
