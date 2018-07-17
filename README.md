@@ -7,7 +7,7 @@ provided by the [RailsApps Project](http://railsapps.github.io/).
 Contributing
 -----------
 
-We use [SemVer](https://semver.org/), so feel free to create a pull request with some new feature, so that it can be reviewed by one of the project managers. 
+We use [SemVer](https://semver.org/), so feel free to create a pull request with some new feature, so that it can be reviewed by one of the project managers.
 
 
 Problems? Issues?
@@ -16,7 +16,11 @@ Problems? Issues?
 If the application doesn't work as expected, please [report an issue](https://github.com/mgfzemor/piubs_apoio/issues)
 and include the diagnostics.
 
-Ruby on Rails
+
+
+
+
+Requirements
 -------------
 
 This application requires:
@@ -29,6 +33,10 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 
 -----
 You may use Docker to hold your information in containers. Learn more about [Installing Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
+
+
+
+
 
 Getting Started - Using Rails
 ---------------
@@ -54,7 +62,7 @@ $ bundle install
 $ rake db:create db:migrate
 ```
 
-- Restore the DB `piubs_apoio` from `db/db.backup` using `psql` and/or [PgAdminIII](https://www.pgadmin.org/download/)
+- Restore the DB `piubs_apoio` from `db/db.backup` using `psql` or the [PgAdminIII](https://www.pgadmin.org/download/) GUI.
 
 - Start your local server
 
@@ -63,6 +71,10 @@ $ rails server -p <your_port>
 ```
 
 - Drink a cup of tea and enjoy it ;)
+
+
+
+
 
 Getting Started - Using Docker
 ---------------
@@ -103,9 +115,14 @@ $ docker-compose up
 
 - Drink a cup of tea and enjoy it in `localhost:3000` ;)
 
+
+
+
 Credits
 -------
 - mgfzemor
+- rafaeelaudibert
+- felipefcomerlato
 
 License
 -------
