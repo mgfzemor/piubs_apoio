@@ -6,14 +6,12 @@
 #
 default: &default
   adapter:  postgresql
-  host:     localhost
-  port: 5432
+  host: <%= ENV['POSTGRES_PORT_5432_TCP_ADDR'] %>
+  port: <%= ENV['POSTGRES_PORT_5432_TCP_PORT'] %>
   encoding: unicode
   database: piubs_apoio
   pool:     5
-  username: rafael
-  password: rafael99
-  template: template0
+  username: postgres
 
 development:
   <<: *default
