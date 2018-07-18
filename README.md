@@ -1,18 +1,26 @@
 Piubs
-================
+------------
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+This application was generated initially with the [RailsApp Composer](https://github.com/RailsApps/rails_apps_composer) gem
 provided by the [RailsApps Project](http://railsapps.github.io/).
 
-Rails Composer is supported by developers who purchase our RailsApps tutorials.
+Contributing
+-----------
+
+We use [SemVer](https://semver.org/), so feel free to create a pull request with some new feature, so that it can be reviewed by one of the project managers.
+
 
 Problems? Issues?
 -----------
 
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
+If the application doesn't work as expected, please [report an issue](https://github.com/mgfzemor/piubs_apoio/issues)
 and include the diagnostics.
 
-Ruby on Rails
+
+
+
+
+Requirements
 -------------
 
 This application requires:
@@ -21,9 +29,15 @@ This application requires:
 - Rails 5.2.0
 - PostreSQL 9.6.*
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
+Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).  
 
-Getting Started
+You may use Docker to hold your information in containers. Learn more about [Installing Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
+
+
+
+
+---
+Getting Started - Using Rails
 ---------------
 - Install application requirements listed above
 - clone project
@@ -39,31 +53,74 @@ $ cd piubs_apoio
 $ bundle install
 ```
 
-- Configure you database
+- Configure you database in `/config/database.yml`
 
-Set your DB configuration in `/config/database.yml`
-
-- Create tables
+- Create DB tables
 
 ```bash
 $ rake db:create db:migrate
 ```
 
-- Restore the DB
+- Restore the DB `piubs_apoio` from `db/db.backup` using `psql` or the [PgAdminIII](https://www.pgadmin.org/download/) GUI.
 
-Restore your database `piubs_apoio` from file `/db/db.backup`
-
-- Start Server
+- Start your local server
 
 ```bash
-$ rails s
+$ rails server -p <your_port>
 ```
 
 - Drink a cup of tea and enjoy it ;)
 
+- The next time, you just need to run `rails server -p <your_port>`
+
+
+---
+Getting Started - Using Docker
+---------------
+- Install application requirements listed above, plus Docker >= 13.1.0
+- Clone project
+
+```bash
+$ git clone https://github.com/mgfzemor/piubs_apoio.git
+```
+- Install gems
+
+```bash
+$ cd piubs_apoio
+$ bundle install
+```
+
+- Configure you database in `/config/database.yml`
+
+- Create the app image
+
+```bash
+$ docker-compose build
+```
+- Start the containers
+
+```bash
+$ docker-compose up
+```
+
+- Restore the DB `piubs_apoio` from `db/db.backup` to the container
+
+```bash
+$ docker cp db/backup.sql <your_container_id>:backup.sql
+$ docker exec -it <your_container_id> bash
+$ psql -d piubs_apoio -f backup.sql -U postgres
+```
+
+- Drink a cup of tea and enjoy it in `localhost:3000` ;)
+
+- The next time, you just need to run `docker-compose up`
+
+---
 Credits
 -------
 - mgfzemor
+- rafaeelaudibert
+- felipefcomerlato
 
 License
 -------
