@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@call) do |f| %>
+<%= simple_form_for(@call, html: {autocomplete: 'off'}) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -8,8 +8,8 @@
     <%= f.input :pergunta, required: true, placeholder: "Descrição detalhada do problema" %>
     <%= f.input :versao, required: true, input_html: { value: '1.0.0' } %>
     <%= f.input :perfil_acesso, label: "Perfil de acesso", required: true %>
-    <%= f.input :detalhe_funcionalidade, required: true %>
-    <%= f.input :severidade, required: true %>
+    <%= f.input :detalhe_funcionalidade%>
+    <%= f.input :severidade%>
     <div class="form-group">
       <label for="select-estado"><b>Estado</b></label>
       <%= f.select :uf, [], {include_blank: true}, id: "select-estado", class: "form-control"%>
@@ -30,6 +30,10 @@
     <%= f.button :submit, value: 'Cadastrar' ,class: 'btn btn-success btn-sm', style: 'color: white'  %>
     <%= link_to 'Voltar', calls_path, class: 'btn btn-success btn-sm', style: 'color: white'  %>
   </div>
+
+  <%= javascript_tag do %>
+    var thing = <%= raw @cidades %>;
+  <% end %>
 
   <script type="text/javascript">
 
