@@ -7,12 +7,15 @@
     <%= f.input :titulo %>
     <%= f.input :pergunta %>
     <%= f.input :versao %>
-    <%= f.input :perfil_acesso %>
+    <%= f.input :perfil_acesso, label: "Perfil de acesso" %>
     <%= f.input :detalhe_funcionalidade %>
     <%= f.input :severidade %>
-    <%= f.input :municipio %>
-    <%= f.input :uf %>
-    <%= f.input :categoria_id %>
+    <%= f.input :municipio, label: "Município" %>
+    <%= f.input :uf, label: "UF" %>
+    <div class="form-group"
+      <label for="select-categoria"><b>Categoria</b></label>
+      <%= f.select :categoria_id, ['Hardware', 'Software'], {include_blank: "Selecione uma categoria: "}, id: "select-categoria", class: "form-control"%>
+    </div>
     <%= f.input :sei %>
 
 <!--<%= f.collection_select(:answer_id, @answers, :id, :resposta, {include_blank: "Selecione uma resposta: "}) %> -->
