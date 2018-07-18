@@ -1,5 +1,6 @@
 Piubs
 ------------
+[![Maintainability](https://api.codeclimate.com/v1/badges/9bffb28c2c0317896636/maintainability)](https://codeclimate.com/github/rafaeelaudibert/piubs_apoio/maintainability)
 
 This application was generated initially with the [RailsApp Composer](https://github.com/RailsApps/rails_apps_composer) gem
 provided by the [RailsApps Project](http://railsapps.github.io/).
