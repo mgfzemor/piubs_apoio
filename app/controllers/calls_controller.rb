@@ -58,6 +58,7 @@ class CallsController < ApplicationController
   # GET /calls/new
   def new
     @call = Call.new
+    @cidades = JSON(IO.binread("./public/estados_cidades.json"));
   end
 
   # GET /calls/1/edit

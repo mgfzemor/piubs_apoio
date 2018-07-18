@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '>= 2.3.1'
 gem 'rails', '~> 5.2.0'
 gem 'pg'
-gem 'json', '~> 1.8', '>= 1.8.3'
 gem 'binding_of_caller'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
