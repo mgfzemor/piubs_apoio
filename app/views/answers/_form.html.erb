@@ -1,4 +1,3 @@
-
 <%= simple_form_for(@answer) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -10,7 +9,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, value: 'Cadastrar Resposta' %>
-    <%= link_to 'Voltar', answers_path, class: 'btn ' %>
+    <%= f.button :submit, value: t(:insert_answer) %>
+    <%= link_to t(:back), answers_path, class: 'btn ' %>
   </div>
 <% end %>

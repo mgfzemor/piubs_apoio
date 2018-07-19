@@ -29,5 +29,10 @@ module Piubs
     # the framework and any gems in your application.
     config.time_zone = 'Brasilia'
     config.active_record.default_timezone = :local
+
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :'pt-BR'
+    # config.i18n.locale = 'pt-BR'
+
   end
 end

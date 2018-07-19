@@ -1,5 +1,5 @@
 class CallsController < ApplicationController
-  before_action :set_call, only: [:show, :edit, :update, :destroy, :show_atendimento, :associate]
+  before_action :set_call, only: [:show, :edit, :update, :destroy, :show_atendimento]
   before_action :set_answers , only: [:new, :edit, :update, :create]
   around_action :catch_not_found, only: :search
 
@@ -26,6 +26,7 @@ class CallsController < ApplicationController
 
   def associate
     @answer = Answer.find(params[:answer_id])
+    @call = Call.find(params[:call_id])
     @call.answer_id = @answer.id
     @call.status = 'Resolvido'
     @call.data_fechamento = Date.today
@@ -77,7 +78,7 @@ class CallsController < ApplicationController
     @call.id = protocol
     respond_to do |format|
       if @call.save
-        format.html { redirect_to "/call/show_atendimento/#{@call.id}", notice: 'Call was successfully created.' }
+        format.html { redirect_to "/call/show_atendimento/#{@call.id}", notice: 'Pergunta criada com sucesso' }
         format.json { render :show, status: :created, location: @call }
       else
         format.html { render :new }
@@ -91,7 +92,7 @@ class CallsController < ApplicationController
   def update
     respond_to do |format|
       if @call.update(call_params)
-        format.html { redirect_to "/call/show_atendimento/#{@call.id}", notice: 'Call was successfully updated.' }
+        format.html { redirect_to "/call/show_atendimento/#{@call.id}", notice: 'Pergunta editada com sucesso' }
         format.json { render :show, status: :ok, location: @call }
       else
         format.html { render :edit }
@@ -105,7 +106,7 @@ class CallsController < ApplicationController
   def destroy
     @call.destroy
     respond_to do |format|
-      format.html { redirect_to calls_url, notice: 'Call was successfully destroyed.' }
+      format.html { redirect_to calls_url, notice: 'Pergunta excluida com sucesso' }
       format.json { head :no_content }
     end
   end
