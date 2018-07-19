@@ -4,7 +4,7 @@
  $("#new_answer").click(function(){
    $("#faq_answer").hide();
    $("#form_answer").show(500);
-   $("#answer_categoria").val("<%= @call.categoria_id %>");
+   $("#answer_categoria").val("<%= @call.category_id %>");
    $("#answer_pergunta").val("<%= @call.pergunta %>");
    $("#call").val("<%= @call.id %>");
  });

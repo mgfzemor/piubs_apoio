@@ -7,6 +7,11 @@
     <li><%= link_to t(:new_call), calls_path %></li>
   <% end %>
 
+  <% if current_user.try(:admin_master?) %>
+    <li><%= link_to 'Categorias', categories_path %></li>
+    <li><%= link_to 'Usuários', users_path %></li>
+  <% end %>
+
   <li><%= link_to 'Logoff', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>
   <li><%= link_to 'Login', new_user_session_path %></li>

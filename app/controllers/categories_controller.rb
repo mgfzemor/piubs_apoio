@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :admin_master_only, :except => :show
 
   # GET /categories
   # GET /categories.json
@@ -62,6 +63,12 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+    def admin_master_only
+      unless current_user.admin_master?
+        redirect_to root_path, :alert => "Access denied."
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])

@@ -13,7 +13,6 @@
       <% if answer.pergunta != 'default'%>
         <tr>
           <td><%= answer.data %></td>
-          <td><%= answer.categoria %></td>
           <td><%= answer.resposta %></td>
           <td><%= link_to t(:associate_answer), "/call/associate/#{answer.id}/#{@call.id}", class: 'btn btn-success',style: 'color: white' %></td>
         </tr>

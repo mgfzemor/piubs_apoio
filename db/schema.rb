@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2018_07_18_131506) do
 
   create_table "answers", force: :cascade do |t|
     t.date "data"
-    t.string "categoria"
     t.string "colaborador"
     t.string "pergunta"
     t.string "resposta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
   end
 
   create_table "calls", force: :cascade do |t|
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 2018_07_18_131506) do
     t.integer "severidade"
     t.string "municipio"
     t.string "uf"
-    t.string "categoria_id"
     t.string "requerente"
     t.string "sei"
     t.bigint "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
     t.index ["answer_id"], name: "index_calls_on_answer_id"
   end
 
@@ -72,4 +72,5 @@ ActiveRecord::Schema.define(version: 2018_07_18_131506) do
   end
 
   add_foreign_key "calls", "answers"
+  add_foreign_key "calls", "categories", name: "fk_categoria"
 end

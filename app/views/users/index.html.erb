@@ -6,7 +6,9 @@
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <%= render user %>
+              <% if current_user.id != user.id %>
+               <%= render user %>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

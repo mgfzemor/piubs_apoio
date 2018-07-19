@@ -12,10 +12,10 @@ class CreateCalls < ActiveRecord::Migration[5.2]
       t.integer :severidade
       t.string :municipio
       t.string :uf
-      t.string :categoria_id
       t.string :requerente
       t.string :sei
       t.references :answer, foreign_key: true
+      t.string :category_id, foreign_key: true
 
       t.timestamps
     end

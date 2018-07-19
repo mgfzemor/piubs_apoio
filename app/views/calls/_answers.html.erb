@@ -12,7 +12,6 @@
     <% @answers.each do |answer| %>
       <tr>
         <td><%= answer.data %></td>
-        <td><%= answer.categoria %></td>
         <td><%= answer.resposta %></td>
         <td><%= link_to t(:view), answer, class: 'btn btn-success',style: 'color: white' %></td>
       </tr>
