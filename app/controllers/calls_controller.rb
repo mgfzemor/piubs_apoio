@@ -58,6 +58,7 @@ class CallsController < ApplicationController
   # GET /calls/new
   def new
     @call = Call.new
+    @cidades = JSON(IO.binread("./public/estados_cidades.json"));
   end
 
   # GET /calls/1/edit
@@ -127,7 +128,7 @@ class CallsController < ApplicationController
     end
 
     def get_current_time
-      Time.now.strftime('%H%M%S')
+      Time.zone.now.strftime('%H%M%S')
     end
 
     def get_current_date
@@ -135,10 +136,10 @@ class CallsController < ApplicationController
     end
 
     def get_protocol
-      user = current_user.id
+      user = format('%05d', current_user.id.to_i) # Leading zeros, allowing to have 99999 users
       time = get_current_time
       date = get_current_date
-      protocol = "#{user}#{time}#{date}"
+      protocol = "#{date}#{time}#{user}"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,25 +1,73 @@
 
-<%= simple_form_for(@call) do |f| %>
+<%= simple_form_for(@call, html: {autocomplete: 'off'}) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :titulo %>
-    <%= f.input :pergunta %>
-    <%= f.input :versao %>
-    <%= f.input :perfil_acesso %>
-    <%= f.input :detalhe_funcionalidade %>
-    <%= f.input :severidade %>
-    <%= f.input :municipio %>
-    <%= f.input :uf %>
-    <%= f.input :categoria_id %>
-    <%= f.input :sei %>
-
-<!--<%= f.collection_select(:answer_id, @answers, :id, :resposta, {include_blank: "Selecione uma resposta: "}) %> -->
+    <%= f.input :titulo, required: true, placeholder: "Descrição sucinta do problema" %>
+    <%= f.input :pergunta, required: true, placeholder: "Descrição detalhada do problema" %>
+    <%= f.input :versao, required: true, input_html: { value: '1.0.0' } %>
+    <%= f.input :perfil_acesso, label: "Perfil de acesso", required: true %>
+    <%= f.input :detalhe_funcionalidade%>
+    <%= f.input :severidade%>
+    <div class="form-group">
+      <label for="select-estado"><b>Estado</b></label>
+      <%= f.select :uf, [], {include_blank: true}, id: "select-estado", class: "form-control"%>
+    </div>
+    <div class="form-group">
+      <label for="select-cidade"><b>Cidade</b></label>
+      <%= f.select :municipio, [], {include_blank: true}, id: "select-cidade", class: "form-control"%>
+    </div>
+    <div class="form-group">
+      <label for="select-categoria"><b>Categoria</b></label>
+      <!-- f.collection_select campo_a_ser_inserido, opcoes, valor, texto, html_options... -->
+      <%=  f.collection_select :categoria_id, Category.all, :title, :title, {include_blank: true}, class: "form-control", required: true %>
+    </div>
+    <%= f.input :sei, required: true, input_html: { value: '00287695' } %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, value: 'Cadastrar' ,class: 'btn btn-success btn-sm', style: 'color: white'  %>
     <%= link_to 'Voltar', calls_path, class: 'btn btn-success btn-sm', style: 'color: white'  %>
   </div>
+
+  <!-- ############################################################################################# -->
+  <%= javascript_tag do %>
+    const JSONdata = <%= @cidades.to_json.html_safe %>
+  <% end %>
+
+  <script type="text/javascript">
+
+
+    $(document).ready(() => {
+
+      // Grabs the jQuery select objects
+      let selectState = $('#select-estado');
+      let selectCidade = $('#select-cidade');
+
+      // Iterates over the states, inserting then in their select dropdown
+      JSONdata.forEach(estado => {
+        $(`<option value="${estado.nome}">${estado.nome}</option>`).appendTo(selectState);
+      });
+
+      // Adds listener to listen for selectState value changes
+      selectState.change(() => {
+
+        let state = $('#select-estado option:selected')[0].text; // Grabs selected state name
+
+        selectCidade.html(''); // Cleans up the selectCidade options values
+
+        // Search the selected state's cities, inserting then in selectCidade dropdown
+        JSONdata.forEach(estado => {
+          if(estado.nome == state){
+              estado.cidades.forEach(cidade => {
+                $(`<option value="${cidade}">${cidade}</option>`).appendTo(selectCidade);
+              });
+          };
+        });
+
+      }).change();
+    });
+
+  </script>
 <% end %>
