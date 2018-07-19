@@ -1,6 +1,6 @@
-<h1>Editing Answer</h1>
+<h1><%= t :editing_answer %></h1>
 
 <%= render 'form', answer: @answer %>
 
-<%= link_to 'Visualizar', @answer %> |
-<%= link_to 'Voltar', answers_path %>
+<%= link_to :view, @answer %> |
+<%= link_to :back, answers_path %>

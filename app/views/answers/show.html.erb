@@ -1,17 +1,17 @@
 <br/>
 <div class="panel panel-primary">
-  <div class="panel-heading"> | Categoria : <span class="badge"> <%= @answer.categoria %> </span> | Data da criação : <span class="badge"> <%= @answer.data %>  </span></div>
+  <div class="panel-heading"> | Categoria : <span class="badge"> <%= @answer.categoria %> </span> | Data da criação : <span class="badge"> <%= @answer.data %> </span> | </div>
   <div class="panel-body">
     <p>
-      <strong>Pergunta:</strong>
+      <strong><%= "#{t :call}:" %></strong>
       <%= @answer.pergunta %>
     </p>
     <p>
-      <strong>Resposta:</strong>
+      <strong><%= "#{t :answer}:" %></strong>
       <%= @answer.resposta %>
     </p>
     <p>
-      <strong>Atendente:</strong>
+      <strong><%= "#{t :attendant}:" %></strong>
       <%= User.find(@answer.colaborador).email %>
     </p>
   </div>

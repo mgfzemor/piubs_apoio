@@ -1,6 +1,6 @@
 <div style="text-align: center">
-<h3>PIUBS - Apoio à Empresas</h3>
-<p>Atendimento: <span class="badge badge-warning"><%= Call.count %></span>   registrados</p>
+<h3><%= t :main_title %></h3>
+<p><%= t :attendance %>s: <span class="badge badge-warning"><%= Call.count %></span>   <%= t :registered %></p>
 <% puts current_user %>
 <%= image_tag("piubs.jpg", :alt => "PIUBS") %>
 <br/>
@@ -16,7 +16,7 @@ margin: 0 auto;
       <div class="input-group">
         <input type="number" id="id" name="id" class="form-control" placeholder="Nº do protocolo">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="submit" >Pesquisar</button>
+          <button class="btn btn-default" type="submit" ><%= t :search %></button>
         </span>
       </div><!-- /input-group -->
     </div><!-- /.col-lg-6 -->
