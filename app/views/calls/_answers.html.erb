@@ -1,9 +1,9 @@
 <table class="table table-hover .table-striped">
   <thead>
     <tr>
-      <th>Data</th>
-      <th>Categoria</th>
-      <th>Resposta</th>
+      <th><%= t :data %></th>
+      <th><%= t :category %></th>
+      <th><%= t :answer %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +13,7 @@
       <tr>
         <td><%= answer.data %></td>
         <td><%= answer.resposta %></td>
-        <td><%= link_to 'Visualizar', answer, class: 'btn btn-success',style: 'color: white' %></td>
+        <td><%= link_to t(:view), answer, class: 'btn btn-success',style: 'color: white' %></td>
       </tr>
     <% end %>
   </tbody>

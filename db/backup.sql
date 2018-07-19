@@ -371,5 +371,3 @@ ALTER TABLE ONLY public.calls
 --
 -- PostgreSQL database dump complete
 --
-
-

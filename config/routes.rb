@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :calls
   resources :answers
   resources :categories

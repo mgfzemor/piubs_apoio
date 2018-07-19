@@ -1,32 +1,40 @@
-<h2>Atendimento</h2>
+<h2><%= t :attendance %></h2>
 <ul class="nav nav-pills" role="tablist">
-  <li role="presentation" class="active"><h4>Nº do Protocolo <span class="label label-danger"><%= @call.id %></span> </h4></li>
+  <li role="presentation" class="active"><h4><%= t :protocol_number_label %> <span class="label label-danger"><%= @call.id %></span> </h4></li>
 </ul>
 <br/>
 <div class="panel panel-primary">
   <!-- Default panel contents -->
-  <div class="panel-heading"> | Categoria : <span class="badge"> <%= @call.category_id %> </span> | Data da criação : <span class="badge"> <%= @call.data_criacao %>  </span></div>
+  <div class="panel-heading"> | <%= t :category %> : <span class="badge"> <%= @call.categoria_id %> </span> | <%= t :creation_date %> : <span class="badge"> <%= @call.data_criacao %>  </span></div>
   <div class="panel-body">
     <h4><%= @call.titulo %></h4>
     <hr/>
-    <p> <strong>Requerente:</strong> <a href="#"><%= User.find(@call.requerente).email %></a></p>
-    <p> <strong>Pergunta:</strong> <%= @call.pergunta %></p>
-    <p> <strong>Perfil acesso: </strong><%= @call.perfil_acesso %>
-        <strong>Versao: </strong><%= @call.versao %>
-       <strong>Detalhe funcionalidade: </strong><%= @call.detalhe_funcionalidade %></p>
+    <p> <strong><%= t :requirer %>:</strong> <a href="#"><%= User.find(@call.requerente).email %></a></p>
+    <p> <strong><%= t :call %>:</strong> <%= @call.pergunta %></p>
+    <p> <strong><%= t :acess_profile_label %>: </strong><%= @call.perfil_acesso %>
+    <p> <strong><%= t :version %>: </strong><%= @call.versao %>
+      <% if @call.detalhe_funcionalidade != '' %>
+        <p> <strong><%= t :functional_detail %>: </strong><%= @call.detalhe_funcionalidade %></p>
+      <% end %>
     <hr/>
     <ul class="nav nav-pills" role="tablist">
-      <li role="presentation" class="active">Status <span class="badge"><%= @call.status %></span> | </li>
-      <li role="presentation" class="active">Severidade <span class="badge"><%= @call.severidade %></span> | </li>
-      <li role="presentation" class="active">UF <span class="badge"><%= @call.uf %></span> | </li>
-      <li role="presentation" class="active">Município <span class="badge"><%= @call.municipio %></span></li>
+      <li role="presentation" class="active"><%= t :city %>: <span class="badge"><%= @call.municipio %></span></li>
+      <li role="presentation" class="active">| <%= t :uf %> <span class="badge"><%= @call.uf %></span></li>
     </ul>
+    <ul class="nav nav-pills" role="tablist">
+      <br>
+      <li role="presentation" class="active"><%= t :status %> <span class="badge"><%= @call.status %></span></li>
+      <% if @call.severidade %>
+        <li role="presentation" class="active">| <%= t :severity %> <span class="badge"><%= @call.severidade %></span></li>
+      <% end %>
+    </ul>
+    <hr/>
   </div>
 </div>
 <% if current_user.try(:admin?) %>
   <% if @call.answer.pergunta == 'default'%>
-    <button id="new_answer" type="button" class="btn btn-success">Nova Resposta</button>
-    <button id="new_faq_answer" type="button" class="btn btn-success">Pesquisar no FAQ</button>
+    <button id="new_answer" type="button" class="btn btn-success"><%= t :new_answer %></button>
+    <button id="new_faq_answer" type="button" class="btn btn-success"><%= :search_FAQ %></button>
  <% end %>
 <% end %>
 <div id="form_answer" style="display: none; width: 50%">
@@ -37,8 +45,8 @@
 <div id="faq_answer" style="display: none; width: 50%%">
   <br/>
   <%= form_tag(call_path, remote: true, :method => :get, class: 'form-inline' ) do %>
-    <%= text_field_tag 'search', nil, placeholder: 'Perguntas semelhantes no FAQ...', class: 'form-control string optional', style: 'width:350px' %>
-    <%= submit_tag 'Pesquisar', class: 'btn btn-primary'%>
+    <%= text_field_tag 'search', nil, placeholder: t(:similar_FAQ), class: 'form-control string optional', style: 'width:350px' %>
+    <%= submit_tag t(:search), class: 'btn btn-primary'%>
   <% end %>
   <hr/>
   <div id="answers">
@@ -46,9 +54,9 @@
 </div>
 <p></p>
 <div class="panel panel-primary">
-    <div class="panel-heading"> Histórico de Atendimento</span> </div>
+    <div class="panel-heading"> <%= t :attendance_history %></span> </div>
     <div class="panel-body">
-      <h4>Respostas</h4>
+      <h4><%= t :answer %>s</h4>
       <% if @call.answer.pergunta != 'default'%>
         <%= render "answers"%>
       <% end %>

@@ -1,0 +1,23 @@
+app:
+  build: .
+  command: rails server -p 3000 -b '0.0.0.0'
+  volumes:
+    - .:/app
+  ports:
+    - "3000:3000"
+  links:
+    - postgres
+postgres:
+  image: postgres:10
+  volumes_from:
+    - pg_data
+  environment:
+    POSTGRES_USER: postgres
+    PGDATA : /var/lib/postgresql/data/pgdata
+  ports:
+    - "5432"
+pg_data:
+  image: alpine:latest
+  volumes:
+    - /var/lib/postgresql/data/pgdata
+  command: "true"

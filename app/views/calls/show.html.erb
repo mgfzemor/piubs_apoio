@@ -1,8 +1,7 @@
-
 <hr/>
 <%= form_tag(call_path, remote: true, :method => :get ) do %>
-  <%= text_field_tag 'search', nil, placeholder: 'Pequisar respostas no FAQ...'%>
-  <%= submit_tag 'Pesquisar'%>
+  <%= text_field_tag 'search', nil, placeholder: t(:search_FAQ)%>
+  <%= submit_tag t(:search)%>
 <% end %>
 <hr/>
 <ul id="answers">
