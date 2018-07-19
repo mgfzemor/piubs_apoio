@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The change you wanted was rejected (422)</title>
+  <title>A mudanca que voce solicitou foi rejeitada (422)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
@@ -58,10 +58,13 @@
   <!-- This file lives in public/422.html -->
   <div class="dialog">
     <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
+      <h1>A mudanca que voce solicitou foi rejeitada</h1>
+      <p>Talvez voce tentou mudar ou acessar algo que voce nao tinha acesso.</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+  <p>Se voce e o dono dessa aplicacao, por favor confira os logs para mais informacoes</p>
   </div>
+  <form>
+    <input type="button" value="Voltar" onclick="history.back()">
+  </form>
 </body>
 </html>
