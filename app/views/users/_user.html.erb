@@ -4,7 +4,7 @@
 <td>
   <%= form_for(user) do |f| %>
     <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-    <%= f.submit 'Alterar permissões', :class => 'button-xs' %>
+    <%= f.submit 'Alterar permissões', :data => { :confirm => "Tem certeza?" }, :class => 'button-xs' %>
   <% end %>
 </td>
 <td>

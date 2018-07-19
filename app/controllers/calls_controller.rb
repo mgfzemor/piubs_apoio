@@ -119,7 +119,8 @@ class CallsController < ApplicationController
 
 
     def set_call
-      @call = Call.find(params[:id])
+      puts params[:id], params[:call_id]
+      @call = Call.find(params[:id] || params[:call_id])
     end
 
     def set_answers

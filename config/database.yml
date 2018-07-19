@@ -11,8 +11,8 @@ default: &default
   encoding: unicode
   database: piubs_apoio
   pool:     5
-  username: rafael
-  password: rafael99
+  username: admin
+  password: calc@2018
   template: template0
 
 development:
