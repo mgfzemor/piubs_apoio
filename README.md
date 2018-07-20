@@ -5,7 +5,7 @@ Piubs
 This application was initially generated with the [RailsApp Composer](https://github.com/RailsApps/rails_apps_composer) gem
 provided by the [RailsApps Project](http://railsapps.github.io/).
 
-**OBS.: :information_source: THIS IS NOT GOING ANYWHERE. IT IS JUST AN EXPERIMENTAL REPOSITORY INTENDED TO LEARN ABOUT RAILS/DOCKER/POSTGRES FOR A FUTURE PROJECT :information_source: **
+**OBS.:** :information_source: **THIS IS NOT GOING ANYWHERE. IT IS JUST AN EXPERIMENTAL REPOSITORY INTENDED TO LEARN ABOUT RAILS/DOCKER/POSTGRES FOR A FUTURE PROJECT** :information_source:
 
 Contributing
 -----------
