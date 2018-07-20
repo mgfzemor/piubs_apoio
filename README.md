@@ -2,8 +2,10 @@ Piubs
 ------------
 [![Maintainability](https://api.codeclimate.com/v1/badges/9bffb28c2c0317896636/maintainability)](https://codeclimate.com/github/rafaeelaudibert/piubs_apoio/maintainability)
 
-This application was generated initially with the [RailsApp Composer](https://github.com/RailsApps/rails_apps_composer) gem
+This application was initially generated with the [RailsApp Composer](https://github.com/RailsApps/rails_apps_composer) gem
 provided by the [RailsApps Project](http://railsapps.github.io/).
+
+**OBS.: :information_source: THIS IS NOT GOING ANYWHERE. IT IS JUST AN EXPERIMENTAL REPOSITORY INTENDED TO LEARN ABOUT RAILS/DOCKER/POSTGRES FOR A FUTURE PROJECT :information_source: **
 
 Contributing
 -----------
@@ -107,9 +109,16 @@ $ docker-compose up
 - Restore the DB `piubs_apoio` from `db/db.backup` to the container
 
 ```bash
-$ docker cp db/backup.sql <your_container_id>:backup.sql
-$ docker exec -it <your_container_id> bash
+$ docker cp db/backup.sql <your_rails_container_id>:backup.sql
+$ docker exec -it <your_rails_container_id> bash
 $ psql -d piubs_apoio -f backup.sql -U postgres
+```
+
+- *Obs: If you already had an old database you must run this commands before, making the database restore. You must be inside of `piubs_apoio` database in postgres container*
+
+```bash
+$ drop schema public cascade;
+$ create schema public;
 ```
 
 - Drink a cup of tea and enjoy it in `localhost:3000` ;)
