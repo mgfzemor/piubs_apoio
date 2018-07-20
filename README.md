@@ -110,11 +110,10 @@ $ docker-compose up
 
 ```bash
 $ docker cp db/backup.sql <your_rails_container_id>:backup.sql
-$ docker exec -it <your_rails_container_id> bash
-$ psql -d piubs_apoio -f backup.sql -U postgres
+$ docker exec -it <your_rails_container_id> sh -c "psql -d piubs_apoio -f backup.sql -U postgres"
 ```
 
-- *Obs: If you already had an old database you must run this commands before, making the database restore. You must be inside of `piubs_apoio` database in postgres container*
+- *Obs: If you already had an old database you must run this commands before, making the database restore. You must be inside of `piubs_apoio` database inside of the postgres container*
 
 ```bash
 $ drop schema public cascade;
