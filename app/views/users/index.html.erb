@@ -4,6 +4,7 @@
     <div class="column">
       <table class="table">
         <tbody>
+          <%# @users = @users.sort {|a, b| a.role > b.role ? -1 : (b.role > a.role ? 1 : 0)} %>
           <% @users.each do |user| %>
             <tr>
               <%= render user %>

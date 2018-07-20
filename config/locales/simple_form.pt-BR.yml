@@ -2,6 +2,7 @@ en:
   simple_form:
     "yes": 'Sim'
     "no": 'Não'
+    search_FAQ: 'Pesquisar no FAQ'
     required:
       text: 'Necessário'
       mark: '*'

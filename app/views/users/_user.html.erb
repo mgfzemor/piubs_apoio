@@ -6,7 +6,7 @@
     <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
 </td>
 <td style="vertical-align: middle">
-    <%= f.submit 'Alterar permissões', :class => 'button-xs', style: "margin-bottom: 5px" %>
+    <%= f.submit 'Alterar permissões', :class => 'button-xs'%>
   <% end %>
   <%= link_to("Apagar usuário", user_path(user), :data => { :confirm => "Tem certeza?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
 </td>
