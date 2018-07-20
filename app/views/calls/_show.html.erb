@@ -34,7 +34,7 @@
 <% if current_user.try(:admin?) %>
   <% if @call.answer.pergunta == 'default'%>
     <button id="new_answer" type="button" class="btn btn-success"><%= t :new_answer %></button>
-    <button id="new_faq_answer" type="button" class="btn btn-success"><%= :search_FAQ %></button>
+    <button id="new_faq_answer" type="button" class="btn btn-success"><%= t :search_FAQ %></button>
  <% end %>
 <% end %>
 <div id="form_answer" style="display: none; width: 50%">
